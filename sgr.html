@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SGR - Plans d'action</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <style>body{padding:18px} .flex{display:flex;gap:8px} .plan{padding:8px;border:1px solid #ddd;margin-bottom:8px}</style>
+</head>
+<body>
+  <header class="site-header"><h1>SGR — Plans d'action</h1></header>
+  <main class="container">
+    <div class="card">
+      <h3>Créer un plan d'action</h3>
+      <form id="createPlanForm">
+        <label>Titre<input name="title" required /></label>
+        <label>Description<textarea name="description"></textarea></label>
+        <label>Date d'échéance<input name="due_date" type="date" /></label>
+        <label>Diagnostic ID (optionnel)<input name="diagnostic_id" type="number" /></label>
+        <div class="actions"><button type="submit">Créer</button></div>
+      </form>
+      <div id="createPlanResult"></div>
+    </div>
+
+    <section style="margin-top:12px">
+      <h3>Plans existants</h3>
+      <div id="plansList">Chargement...</div>
+    </section>
+  </main>
+
+  <template id="planTpl">
+    <div class="plan">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <strong class="title"></strong>
+        <div class="meta"></div>
+      </div>
+      <div class="desc"></div>
+      <div style="margin-top:6px">
+        <button class="viewBtn">Voir</button>
+        <button class="deleteBtn">Supprimer</button>
+      </div>
+      <div class="tasksArea" style="margin-top:8px;display:none"></div>
+    </div>
+  </template>
+
+  <script src="assets/sgr.js"></script>
+</body>
+</html>

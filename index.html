@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RIA Check & Go - Prototype</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <script defer src="assets/script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>body{visibility:hidden}</style>
+</head>
+<body>
+  <header class="site-header">
+    <h1>RIA Check & Go</h1>
+    <nav>
+      <a href="#diagnostic">Diagnostic</a>
+      <a href="#resultat">Résultat</a>
+      <a href="#contact">Contact / Devis</a>
+      <a href="docs/technical.md">Documentation</a>
+      <a href="docs/mockups.html">Maquettes</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section id="intro">
+      <h2>Accompagner la mise en conformité RIA</h2>
+      <p>Prototype interactif minimal qui illustre les exigences du cahier des charges : questionnaire de classification, génération de rapport et page contact pour demander un devis.</p>
+      <p>Commencez par le diagnostic : cliquez sur <a href="#diagnostic">Diagnostic</a>.</p>
+    </section>
+
+    <section id="diagnostic" class="card">
+      <h2>Diagnostic rapide</h2>
+      <p>Répondez au questionnaire pour déterminer le niveau de risque du Système d'IA (SIA).</p>
+      <form id="quiz">
+        <p>Répondez honnêtement : les questions marquées <strong>!</strong> signalent des cas potentiellement interdits (Article 5).</p>
+        <div class="question">
+          <label>1. Le système est-il destiné à prendre des décisions juridiques ou administratives importantes ?</label>
+          <select name="q1">
+            <option value="no">Non</option>
+            <option value="yes">Oui</option>
+          </select>
+        </div>
+        <div class="question">
+          <label>2. Le système est utilisé pour le recrutement, la sélection ou l'évaluation du personnel ?</label>
+          <select name="q2">
+            <option value="no">Non</option>
+            <option value="yes">Oui</option>
+          </select>
+        </div>
+        <div class="question">
+          <label>3. Le système traite des données biométriques ou de santé sensibles ?</label>
+          <select name="q3">
+            <option value="no">Non</option>
+            <option value="yes">Oui</option>
+          </select>
+        </div>
+        <div class="question">
+          <label>4. Le système est un modèle génératif (GPAI) exposant des contenus aux utilisateurs ?</label>
+          <select name="q4">
+            <option value="no">Non</option>
+            <option value="yes">Oui</option>
+          </select>
+        </div>
+        <div class="question">
+          <label>5. Le système nécessite une journalisation et traçabilité stricte pour fins d'audit ?</label>
+          <select name="q5">
+            <option value="no">Non</option>
+            <option value="yes">Oui</option>
+          </select>
+        </div>
+        <div class="question">
+          <label>6. Le système est conçu pour surveiller ou contrôler le comportement des personnes (reconnaissance faciale, surveillance biométrique) ? <strong>!</strong></label>
+          <select name="q6">
+            <option value="no">Non</option>
+            <option value="yes">Oui</option>
+          </select>
+        </div>
+        <div class="question">
+          <label>7. Le système a un impact potentiel sur la santé ou la sécurité des personnes (ex. dispositifs médicaux, sécurité industrielle) ?</label>
+          <select name="q7">
+            <option value="no">Non</option>
+            <option value="yes">Oui</option>
+          </select>
+        </div>
+        <div class="question">
+          <label>8. Le système est destiné à être utilisé dans l'administration de la justice (évaluation de preuves, décisions judiciaires) ? <strong>!</strong></label>
+          <select name="q8">
+            <option value="no">Non</option>
+            <option value="yes">Oui</option>
+          </select>
+        </div>
+        <div class="question">
+          <label>9. Le système est fourni comme un modèle d'IA à usage général (GPAI) ou vendu à des tiers pour intégration ?</label>
+          <select name="q9">
+            <option value="no">Non</option>
+            <option value="yes">Oui</option>
+          </select>
+        </div>
+        <div class="question">
+          <label>10. Le système prend des décisions automatisées ayant un impact significatif sur les droits fondamentaux des personnes ?</label>
+          <select name="q10">
+            <option value="no">Non</option>
+            <option value="yes">Oui</option>
+          </select>
+        </div>
+
+        <div class="actions">
+          <button type="button" id="compute">Calculer le niveau de risque</button>
+          <button type="reset">Réinitialiser</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="resultat" class="card">
+      <h2>Résultat</h2>
+      <div id="report">
+        <p>Aucun diagnostic calculé pour le moment.</p>
+      </div>
+      <div class="actions">
+        <button id="exportPdf" disabled>Télécharger le rapport (PDF)</button>
+      </div>
+    </section>
+
+    <section id="contact" class="card">
+      <h2>Contact / Demande de devis</h2>
+      <p>Soumettez une demande et nous vous recontacterons pour un devis personnalisé.</p>
+      <form id="contactForm">
+        <label>Nom de l'entreprise<input name="company" required /></label>
+        <label>Email<input name="email" type="email" required /></label>
+        <label>Message<textarea name="message"></textarea></label>
+        <div class="actions">
+          <button type="submit">Envoyer la demande</button>
+        </div>
+      </form>
+      <div id="contactResult"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>Prototype RIA Check & Go — livré avec documentation technique et maquettes.</small>
+  </footer>
+
+  <script>document.body.style.visibility='visible'</script>
+</body>
+</html>

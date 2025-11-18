@@ -1,0 +1,111 @@
+@startuml RIA_Check_Go
+title RIA-Check-Go - Modèle de données (simplifié)
+skinparam defaultFontName Arial
+
+' Entities
+entity "companies" as companies {
+  * id : INTEGER <<PK>>
+  --
+  name : TEXT
+  siret : TEXT
+  contact_email : TEXT
+  created_at : DATETIME
+}
+
+entity "systems" as systems {
+  * id : INTEGER <<PK>>
+  --
+  company_id : INTEGER <<FK companies.id>>
+  name : TEXT
+  description : TEXT
+  domain : TEXT
+  created_at : DATETIME
+}
+
+entity "diagnostics" as diagnostics {
+  * id : INTEGER <<PK>>
+  --
+  system_id : INTEGER <<FK systems.id>>
+  created_by : TEXT
+  created_at : DATETIME
+  score : INTEGER
+  level : TEXT
+  payload_json : TEXT
+  report_url : TEXT
+}
+
+entity "datasets" as datasets {
+  * id : INTEGER <<PK>>
+  --
+  system_id : INTEGER <<FK systems.id>>
+  type : TEXT
+  description : TEXT
+  metadata_json : TEXT
+  created_at : DATETIME
+}
+
+entity "users" as users {
+  * id : INTEGER <<PK>>
+  --
+  name : TEXT
+  email : TEXT
+  password_hash : TEXT
+  role : TEXT
+  created_at : DATETIME
+}
+
+entity "sgr_plans" as sgr_plans {
+  * id : INTEGER <<PK>>
+  --
+  title : TEXT
+  description : TEXT
+  system_id : INTEGER <<FK systems.id>>
+  owner_id : INTEGER <<FK users.id>>
+  diagnostic_id : INTEGER <<FK diagnostics.id>>
+  status : TEXT
+  due_date : DATETIME
+  created_at : DATETIME
+}
+
+entity "sgr_tasks" as sgr_tasks {
+  * id : INTEGER <<PK>>
+  --
+  plan_id : INTEGER <<FK sgr_plans.id>>
+  title : TEXT
+  description : TEXT
+  assignee_id : INTEGER <<FK users.id>>
+  status : TEXT
+  comments : TEXT
+  created_at : DATETIME
+}
+
+entity "incidents" as incidents {
+  * id : INTEGER <<PK>>
+  --
+  system_id : INTEGER <<FK systems.id>>
+  title : TEXT
+  description : TEXT
+  severity : TEXT
+  created_at : DATETIME
+}
+
+entity "logs" as logs {
+  * id : INTEGER <<PK>>
+  --
+  type : TEXT
+  message : TEXT
+  meta_json : TEXT
+  created_at : DATETIME
+}
+
+' Relations
+companies ||--o{ systems : owns
+systems ||--o{ diagnostics : has
+systems ||--o{ datasets : contains
+systems ||--o{ incidents : "may have"
+users ||--o{ sgr_plans : "owns/creates"
+sgr_plans ||--o{ sgr_tasks : contains
+users ||--o{ sgr_tasks : "assigned to"
+diagnostics ||--o{ sgr_plans : "may generate"
+
+@enduml

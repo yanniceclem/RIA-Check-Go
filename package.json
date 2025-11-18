@@ -1,0 +1,18 @@
+{
+  "name": "ria-check-go-backend",
+  "version": "0.1.0",
+  "description": "Backend minimal pour prototype RIA Check & Go (Express + SQLite)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^8.0.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "multer": "^1.4.5",
+    "pdfkit": "^0.13.0",
+    "express-session": "^1.17.3",
+    "bcrypt": "^5.1.0"
+  }
+}

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Maquettes détaillées — RIA Check & Go</title>
+  <style>
+    body{font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;background:#f3f6fb;color:#102030;margin:20px}
+    .screen{width:360px;background:white;border-radius:14px;padding:16px;margin-bottom:20px;box-shadow:0 12px 30px rgba(16,32,48,0.08)}
+    .header{display:flex;align-items:center;gap:12px}
+    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#0b5fff,#6b9cff);display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+    h2{margin:8px 0}
+    .primary{background:#0b5fff;color:white;padding:10px;border-radius:10px;display:inline-block;text-decoration:none}
+    .badge{display:inline-block;padding:6px 8px;border-radius:8px;background:#e7f0ff;color:#0543d6;font-weight:600}
+    .row{display:flex;gap:8px}
+    .card{border:1px solid #e6eefc;border-radius:10px;padding:10px;margin-top:10px}
+    .list{margin:8px 0;padding-left:18px}
+    footer{margin-top:10px;font-size:12px;color:#6b7b8a}
+  </style>
+</head>
+<body>
+  <h1>Maquettes détaillées — RIA Check & Go</h1>
+
+  <section class="screen" aria-labelledby="s1">
+    <div class="header"><div class="logo">RIA</div><div>
+      <strong>RIA Check & Go</strong><br /><small>Accueil — Diagnostic rapide</small>
+    </div></div>
+    <h2 id="s1">Écran 1 — Accueil / Diagnostic</h2>
+    <p>Intro court: explique en 1 phrase l'objet du diagnostic et la confidentialité des données. Gros bouton pour démarrer.</p>
+    <div style="margin-top:10px"><a class="primary" href="/index.html#diagnostic">Démarrer le diagnostic</a></div>
+    <div class="card">
+      <strong>Pourquoi utiliser cet outil ?</strong>
+      <ul class="list">
+        <li>Identifier rapidement le niveau de risque du SIA</li>
+        <li>Obtenir un rapport synthétique exportable</li>
+        <li>Demander un accompagnement / devis</li>
+      </ul>
+    </div>
+    <footer>Lien vers documentation & maquettes | Version prototype</footer>
+  </section>
+
+  <section class="screen" aria-labelledby="s2">
+    <div class="header"><div class="logo">R</div><div>
+      <strong>RIA Check & Go</strong><br /><small>Résultat / Score</small>
+    </div></div>
+    <h2 id="s2">Écran 2 — Résultat & Recommandations</h2>
+    <div class="row">
+      <div style="flex:1">
+        <div class="badge">Haut Risque</div>
+        <h3 style="margin:8px 0">Score: 9</h3>
+        <div class="card">
+          <strong>Motifs</strong>
+          <ul class="list">
+            <li>Traitement données biométriques</li>
+            <li>Usage en recrutement</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <strong>Obligations principales</strong>
+      <ul class="list">
+        <li>Système de gestion des risques (Article 9)</li>
+        <li>Documentation technique (Annexe IV)</li>
+        <li>Enregistrement dans le registre UE (Article 51)</li>
+      </ul>
+    </div>
+    <div style="margin-top:10px">
+      <a class="primary" href="#">Télécharger le rapport (PDF)</a>
+      <a style="margin-left:8px" href="#">Demander un audit</a>
+    </div>
+  </section>
+
+  <section class="screen" aria-labelledby="s3">
+    <div class="header"><div class="logo">C</div><div>
+      <strong>RIA Check & Go</strong><br /><small>Contact / Devis</small>
+    </div></div>
+    <h2 id="s3">Écran 3 — Contact / Demande de devis</h2>
+    <div class="card">
+      <strong>Formulaire</strong>
+      <p><em>Champs</em>: Nom entreprise, Email, Description SIA, Priorité, Joindre fichiers (pdf/zip)</p>
+      <p><strong>SLA estimé:</strong> Réponse sous 48h — pré-audit sous 5 jours ouvrés.</p>
+    </div>
+    <div class="card" style="background:#fff8f2;border-color:#ffe6c6">
+      <strong>Processus commercial / conformité</strong>
+      <ol class="list">
+        <li>Réception de la demande</li>
+        <li>Pré-audit et chiffrage</li>
+        <li>Signature du contrat / mission</li>
+      </ol>
+    </div>
+  </section>
+
+  <p><a href="/docs/mockups.html">Voir versions simples (wireframes)</a> — <a href="/index.html">Retour au prototype</a></p>
+</body>
+</html>
